@@ -34,7 +34,7 @@ class NullSessionTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->mockSessionId = $this->getMock('stubbles\webapp\session\SessionId');
+        $this->mockSessionId = $this->getMock('stubbles\webapp\session\id\SessionId');
         $this->nullSession   = new NullSession($this->mockSessionId);
     }
 

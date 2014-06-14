@@ -7,7 +7,7 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\id;
 use stubbles\input\web\WebRequest;
 use stubbles\webapp\response\Cookie;
 use stubbles\webapp\response\Response;

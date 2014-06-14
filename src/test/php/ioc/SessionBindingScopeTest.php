@@ -7,8 +7,8 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
-use stubbles\lang\reflect\ReflectionClass;
+namespace stubbles\webapp\session\ioc;
+use stubbles\lang;
 /**
  * Tests for stubbles\webapp\session\SessionBindingScope.
  *
@@ -34,12 +34,6 @@ class SessionBindingScopeTest extends \PHPUnit_Framework_TestCase
      * @type  \PHPUnit_Framework_MockObject_MockObject
      */
     private $mockInjectionProvider;
-    /**
-     * reflection class for instance to create
-     *
-     * @type  ReflectionClass
-     */
-    private $refClass;
 
     /**
      * set up test enviroment
@@ -49,7 +43,6 @@ class SessionBindingScopeTest extends \PHPUnit_Framework_TestCase
         $this->mockSession           = $this->getMock('stubbles\webapp\session\Session');
         $this->sessionScope          = new SessionBindingScope($this->mockSession);
         $this->mockInjectionProvider = $this->getMock('stubbles\ioc\InjectionProvider');
-        $this->refClass              = new ReflectionClass('\\stdClass');
     }
 
     /**
@@ -67,7 +60,7 @@ class SessionBindingScopeTest extends \PHPUnit_Framework_TestCase
         $this->mockInjectionProvider->expects($this->never())
                           ->method('get');
         $this->assertSame($instance,
-                          $this->sessionScope->getInstance($this->refClass,
+                          $this->sessionScope->getInstance(lang\reflect('\stdClass'),
                                                            $this->mockInjectionProvider
                                                )
         );
@@ -88,7 +81,7 @@ class SessionBindingScopeTest extends \PHPUnit_Framework_TestCase
                           ->method('get')
                           ->will($this->returnValue($instance));
         $this->assertSame($instance,
-                          $this->sessionScope->getInstance($this->refClass,
+                          $this->sessionScope->getInstance(lang\reflect('\stdClass'),
                                                            $this->mockInjectionProvider
                                                )
         );

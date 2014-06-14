@@ -7,9 +7,9 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\storage;
 /**
- * Tests for stubbles\webapp\session\NativeSessionStorage.
+ * Tests for stubbles\webapp\session\storage\NativeSessionStorage.
  *
  * @since  2.0.0
  * @group  session

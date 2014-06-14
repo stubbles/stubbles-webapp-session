@@ -7,12 +7,13 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\id;
 /**
- * Tests for stubbles\webapp\session\NoneDurableSessionId.
+ * Tests for stubbles\webapp\session\id\NoneDurableSessionId.
  *
  * @since  2.0.0
  * @group  session
+ * @group  id
  */
 class NoneDurableSessionIdTest extends \PHPUnit_Framework_TestCase
 {

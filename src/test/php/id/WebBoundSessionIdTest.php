@@ -7,13 +7,14 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\id;
 use stubbles\input\ValueReader;
 /**
- * Tests for stubbles\webapp\session\WebBoundSessionId.
+ * Tests for stubbles\webapp\session\id\WebBoundSessionId.
  *
  * @since  2.0.0
  * @group  session
+ * @group  id
  */
 class WebBoundSessionIdTest extends \PHPUnit_Framework_TestCase
 {

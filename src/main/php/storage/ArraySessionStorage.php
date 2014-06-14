@@ -7,7 +7,8 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\storage;
+use stubbles\webapp\session\Session;
 /**
  * Session storage that uses an internal array only and is therefore not durable.
  *

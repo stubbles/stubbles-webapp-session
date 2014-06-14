@@ -7,7 +7,8 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\storage;
+use stubbles\webapp\session\id\SessionId;
 /**
  * Session storage using default PHP sessions.
  *

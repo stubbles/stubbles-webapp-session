@@ -33,8 +33,8 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->mockSessionStorage = $this->getMock('stubbles\webapp\session\SessionStorage');
-        $this->mockSessionId      = $this->getMock('stubbles\webapp\session\SessionId');
+        $this->mockSessionStorage = $this->getMock('stubbles\webapp\session\storage\SessionStorage');
+        $this->mockSessionId      = $this->getMock('stubbles\webapp\session\id\SessionId');
     }
 
     /**

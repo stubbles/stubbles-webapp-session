@@ -7,10 +7,11 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\ioc;
 use stubbles\ioc\InjectionProvider;
 use stubbles\ioc\binding\BindingScope;
 use stubbles\lang\reflect\BaseReflectionClass;
+use stubbles\webapp\session\Session;
 /**
  * Interface for session storages.
  */

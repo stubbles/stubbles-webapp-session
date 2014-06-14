@@ -8,6 +8,7 @@
  * @package  stubbles\webapp\session
  */
 namespace stubbles\webapp\session;
+use stubbles\webapp\session\id\SessionId;
 /**
  * Null session for usages in non-sessionbased web applications.
  *

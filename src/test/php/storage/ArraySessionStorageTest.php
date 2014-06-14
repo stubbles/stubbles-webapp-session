@@ -7,9 +7,10 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\storage;
+use stubbles\webapp\session\Session;
 /**
- * Tests for stubbles\webapp\session\ArraySessionStorage.
+ * Tests for stubbles\webapp\session\storage\ArraySessionStorage.
  *
  * @since  2.0.0
  * @group  session

@@ -7,7 +7,7 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\storage;
 /**
  * Interface for session storages.
  *

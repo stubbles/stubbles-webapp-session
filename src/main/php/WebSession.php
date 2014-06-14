@@ -9,6 +9,8 @@
  */
 namespace stubbles\webapp\session;
 use stubbles\lang\exception\IllegalStateException;
+use stubbles\webapp\session\id\SessionId;
+use stubbles\webapp\session\storage\SessionStorage;
 /**
  * Base class for session implementations.
  *

@@ -7,7 +7,7 @@
  *
  * @package  stubbles\webapp\session
  */
-namespace stubbles\webapp\session;
+namespace stubbles\webapp\session\id;
 /**
  * Session id which is always created new.
  *
