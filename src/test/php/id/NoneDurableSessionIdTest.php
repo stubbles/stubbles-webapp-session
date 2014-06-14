@@ -29,15 +29,32 @@ class NoneDurableSessionIdTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->noneDurableSessionId = new NoneDurableSessionId('foo');
+        $this->noneDurableSessionId = new NoneDurableSessionId();
     }
 
     /**
      * @test
+     * @since  4.0.0
      */
-    public function returnsGivenSessionName()
+    public function sessionNameStaysSameForInstance()
     {
-        $this->assertEquals('foo', $this->noneDurableSessionId->name());
+        $this->assertEquals(
+                $this->noneDurableSessionId->name(),
+                $this->noneDurableSessionId->name()
+        );
+    }
+
+    /**
+     * @test
+     * @since  4.0.0
+     */
+    public function sessionNameIsDifferentForDifferentInstances()
+    {
+        $other = new NoneDurableSessionId();
+        $this->assertNotEquals(
+                $this->noneDurableSessionId->name(),
+                $other->name()
+        );
     }
 
     /**

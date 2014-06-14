@@ -29,22 +29,20 @@ class NoneDurableSessionId implements SessionId
     private $sessionName;
 
     /**
-     * constructor
-     *
-     * @param  string  $sessionName  name of the session
-     */
-    public function __construct($sessionName)
-    {
-        $this->sessionName = $sessionName;
-    }
-
-    /**
      * returns session name
      *
      * @return  string
      */
     public function name()
     {
+        if (null === $this->sessionName) {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $this->sessionName = '';
+            for ($i = 0; $i < 32; $i++) {
+                $this->sessionName .= $characters[rand(0, strlen($characters) - 1)];
+            }
+        }
+
         return $this->sessionName;
     }
 
