@@ -9,6 +9,7 @@
  */
 namespace stubbles\webapp\session;
 use stubbles\input\ValueReader;
+use stubbles\ioc\Binder;
 /**
  * Tests for stubbles\webapp\session\*().
  *
@@ -73,5 +74,38 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
                         $this->getMock('stubbles\webapp\response\Response')
                  )->name()
         );
+    }
+
+    /**
+     * @test
+     */
+    public function bindBindsSessionToPassedInstance()
+    {
+        $binder = new Binder();
+        $mockSession = $this->getMock('stubbles\webapp\session\Session');
+        bind($binder, $mockSession);
+        $this->assertSame(
+                $mockSession,
+                $binder->getInjector()->getInstance('stubbles\webapp\session\Session')
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function bindInitializesSessionScope()
+    {
+        $binder = new Binder();
+        $mockSession = $this->getMock('stubbles\webapp\session\Session');
+        bind($binder, $mockSession);
+        try {
+            $binder->bind('\stdClass')
+                   ->to('\stdClass')
+                   ->inSession();
+        } catch (RuntimeException $re) {
+            $this->fail($re->getMessage());
+        }
+
+        $this->addToAssertionCount(1);
     }
 }

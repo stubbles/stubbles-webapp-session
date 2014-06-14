@@ -9,11 +9,14 @@
  */
 namespace stubbles\webapp\session {
     use stubbles\input\web\WebRequest;
+    use stubbles\ioc\Binder;
     use stubbles\webapp\response\Response;
     use stubbles\webapp\session\NullSession;
+    use stubbles\webapp\session\Session;
     use stubbles\webapp\session\WebSession;
     use stubbles\webapp\session\id\NoneDurableSessionId;
     use stubbles\webapp\session\id\WebBoundSessionId;
+    use stubbles\webapp\session\ioc\SessionBindingScope;
     use stubbles\webapp\session\storage\NativeSessionStorage;
 
     /**
@@ -65,6 +68,19 @@ namespace stubbles\webapp\session {
                {
                    return new NullSession(new WebBoundSessionId($request, $response, $sessionCookieName));
                };
+    }
+
+    /**
+     * binds session and creates a session scope
+     *
+     * @param  Binder   $binder
+     * @param  Session  $session
+     * @since  4.0.0
+     */
+    function bind(Binder $binder, Session $session)
+    {
+        $binder->bind('stubbles\webapp\session\Session')->toInstance($session);
+        $binder->setSessionScope(new SessionBindingScope($session));
     }
 }
 
