@@ -55,7 +55,7 @@ class SessionBindingScopeTest extends \PHPUnit_Framework_TestCase
                           ->method('hasValue')
                           ->will($this->returnValue(true));
         $this->mockSession->expects($this->once())
-                          ->method('getValue')
+                          ->method('value')
                           ->will($this->returnValue($instance));
         $this->mockInjectionProvider->expects($this->never())
                           ->method('get');
@@ -76,7 +76,7 @@ class SessionBindingScopeTest extends \PHPUnit_Framework_TestCase
                           ->method('hasValue')
                           ->will($this->returnValue(false));
         $this->mockSession->expects($this->never())
-                          ->method('getValue');
+                          ->method('value');
         $this->mockInjectionProvider->expects($this->once())
                           ->method('get')
                           ->will($this->returnValue($instance));

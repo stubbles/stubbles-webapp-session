@@ -45,7 +45,7 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
      */
     public function returnsGivenSessionName()
     {
-        $this->assertEquals('foo', $this->nativeSessionStorage->getName());
+        $this->assertEquals('foo', $this->nativeSessionStorage->name());
     }
 
     /**
@@ -53,7 +53,7 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
      */
     public function returnsIdOfStartedSession()
     {
-        $this->assertNotEmpty($this->nativeSessionStorage->get());
+        $this->assertNotEmpty((string) $this->nativeSessionStorage);
     }
 
     /**
@@ -61,16 +61,15 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
      */
     public function canRegenerateSessionId()
     {
-        $id = $this->nativeSessionStorage->get();
         $file = null;
         $line = null;
         if (headers_sent($file, $line)) {
             $this->markTestSkipped('Headers already send in ' . $file . ' on line ' . $line . ', skipped ' . __METHOD__ . '()');
         }
 
-        $this->assertNotEquals($id,
-                               $this->nativeSessionStorage->regenerate()
-                                                          ->get()
+        $this->assertNotEquals(
+                (string) $this->nativeSessionStorage,
+                (string) $this->nativeSessionStorage->regenerate()
         );
     }
 
@@ -79,10 +78,9 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
      */
     public function invalidateCreatesNewSessionId()
     {
-        $id = $this->nativeSessionStorage->get();
-        $this->assertNotEquals($id,
-                               $this->nativeSessionStorage->invalidate()
-                                                          ->get()
+        $this->assertNotEquals(
+                (string) $this->nativeSessionStorage,
+                (string) $this->nativeSessionStorage->invalidate()
         );
     }
 
@@ -94,7 +92,7 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([],
                             $this->nativeSessionStorage->putValue('foo', 'bar')
                                                        ->clear()
-                                                       ->getValueKeys()
+                                                       ->valueKeys()
         );
     }
 
@@ -111,7 +109,7 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
      */
     public function returnsNullForNonExistingValue()
     {
-        $this->assertNull($this->nativeSessionStorage->getValue('foo'));
+        $this->assertNull($this->nativeSessionStorage->value('foo'));
     }
 
     /**
@@ -141,7 +139,7 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('bar',
                             $this->nativeSessionStorage->putValue('foo', 'bar')
-                                                       ->getValue('foo')
+                                                       ->value('foo')
         );
     }
 
@@ -162,7 +160,7 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
     public function hasNoValueKeysByDefault()
     {
         $this->assertEquals([],
-                            $this->nativeSessionStorage->getValueKeys()
+                            $this->nativeSessionStorage->valueKeys()
         );
     }
 
@@ -173,7 +171,7 @@ class NativeSessionStorageTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(['foo'],
                             $this->nativeSessionStorage->putValue('foo', 'bar')
-                                                       ->getValueKeys()
+                                                       ->valueKeys()
         );
     }
 }

@@ -68,7 +68,7 @@ class WebBoundSessionId implements SessionId
      *
      * @return  string
      */
-    public function getName()
+    public function name()
     {
         return $this->sessionName;
     }
@@ -78,7 +78,7 @@ class WebBoundSessionId implements SessionId
      *
      * @return  string
      */
-    public function get()
+    public function __toString()
     {
         if (null === $this->id) {
             $this->id = $this->read();

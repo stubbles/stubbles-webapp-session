@@ -36,7 +36,7 @@ interface SessionStorage
      * @param   string  $key  key where value is stored under
      * @return  mixed
      */
-    public function getValue($key);
+    public function value($key);
 
     /**
      * stores a value associated with the key
@@ -60,5 +60,5 @@ interface SessionStorage
      *
      * @return  string[]
      */
-    public function getValueKeys();
+    public function valueKeys();
 }

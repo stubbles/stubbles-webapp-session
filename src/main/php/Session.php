@@ -33,7 +33,7 @@ interface Session
      *
      * @return  string  the session id
      */
-    public function getId();
+    public function id();
 
     /**
      * regenerates the session id but leaves session data
@@ -47,7 +47,7 @@ interface Session
      *
      * @return  string
      */
-    public function getName();
+    public function name();
 
     /**
      * checks if this session is valid
@@ -78,7 +78,7 @@ interface Session
      * @param   mixed   $default  optional  return this if no data is associated with $key
      * @return  mixed
      */
-    public function getValue($key, $default = null);
+    public function value($key, $default = null);
 
     /**
      * stores a value associated with the key
@@ -102,5 +102,5 @@ interface Session
      *
      * @return  string[]
      */
-    public function getValueKeys();
+    public function valueKeys();
 }

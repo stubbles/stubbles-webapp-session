@@ -45,7 +45,7 @@ class ArraySessionStorageTest extends \PHPUnit_Framework_TestCase
      */
     public function fingerprintIsEmptyByDefault()
     {
-        $this->assertEquals('', $this->arraySessionStorage->getValue(Session::FINGERPRINT));
+        $this->assertEquals('', $this->arraySessionStorage->value(Session::FINGERPRINT));
     }
 
     /**
@@ -56,7 +56,7 @@ class ArraySessionStorageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([],
                             $this->arraySessionStorage->putValue('foo', 'bar')
                                                       ->clear()
-                                                      ->getValueKeys()
+                                                      ->valueKeys()
         );
     }
 
@@ -73,7 +73,7 @@ class ArraySessionStorageTest extends \PHPUnit_Framework_TestCase
      */
     public function returnsNullForNonExistingValue()
     {
-        $this->assertNull($this->arraySessionStorage->getValue('foo'));
+        $this->assertNull($this->arraySessionStorage->value('foo'));
     }
 
     /**
@@ -103,7 +103,7 @@ class ArraySessionStorageTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('bar',
                             $this->arraySessionStorage->putValue('foo', 'bar')
-                                                      ->getValue('foo')
+                                                      ->value('foo')
         );
     }
 
@@ -124,7 +124,7 @@ class ArraySessionStorageTest extends \PHPUnit_Framework_TestCase
     public function returnsDefaultValueKeysAfterCreation()
     {
         $this->assertEquals([Session::FINGERPRINT],
-                            $this->arraySessionStorage->getValueKeys()
+                            $this->arraySessionStorage->valueKeys()
         );
     }
 
@@ -137,7 +137,7 @@ class ArraySessionStorageTest extends \PHPUnit_Framework_TestCase
                                   'foo'
                             ],
                             $this->arraySessionStorage->putValue('foo', 'bar')
-                                                      ->getValueKeys()
+                                                      ->valueKeys()
         );
     }
 }

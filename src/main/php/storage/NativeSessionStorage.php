@@ -61,7 +61,7 @@ class NativeSessionStorage implements SessionStorage, SessionId
      *
      * @return  string
      */
-    public function getName()
+    public function name()
     {
         return $this->sessionName;
     }
@@ -71,7 +71,7 @@ class NativeSessionStorage implements SessionStorage, SessionId
      *
      * @return  string  the session id
      */
-    public function get()
+    public function __toString()
     {
         $this->init();
         return session_id();
@@ -135,7 +135,7 @@ class NativeSessionStorage implements SessionStorage, SessionId
      * @param   string  $key  key where value is stored under
      * @return  mixed
      */
-    public function getValue($key)
+    public function value($key)
     {
         $this->init();
         if (isset($_SESSION[$key])) {
@@ -177,7 +177,7 @@ class NativeSessionStorage implements SessionStorage, SessionId
      *
      * @return  string[]
      */
-    public function getValueKeys()
+    public function valueKeys()
     {
         $this->init();
         return array_keys($_SESSION);

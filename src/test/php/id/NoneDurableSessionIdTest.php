@@ -37,7 +37,7 @@ class NoneDurableSessionIdTest extends \PHPUnit_Framework_TestCase
      */
     public function returnsGivenSessionName()
     {
-        $this->assertEquals('foo', $this->noneDurableSessionId->getName());
+        $this->assertEquals('foo', $this->noneDurableSessionId->name());
     }
 
     /**
@@ -46,7 +46,7 @@ class NoneDurableSessionIdTest extends \PHPUnit_Framework_TestCase
     public function hasSessionId()
     {
         $this->assertRegExp('/^([a-zA-Z0-9]{32})$/D',
-                            $this->noneDurableSessionId->get()
+                            (string) $this->noneDurableSessionId
         );
     }
 
@@ -55,10 +55,9 @@ class NoneDurableSessionIdTest extends \PHPUnit_Framework_TestCase
      */
     public function regenerateChangesSessionId()
     {
-        $previous = $this->noneDurableSessionId->get();
+        $previous = (string) $this->noneDurableSessionId;
         $this->assertNotEquals($previous,
-                               $this->noneDurableSessionId->regenerate()
-                                                          ->get()
+                               (string) $this->noneDurableSessionId->regenerate()
         );
     }
 
@@ -68,8 +67,7 @@ class NoneDurableSessionIdTest extends \PHPUnit_Framework_TestCase
     public function regeneratedSessionIdIsValid()
     {
         $this->assertRegExp('/^([a-zA-Z0-9]{32})$/D',
-                            $this->noneDurableSessionId->regenerate()
-                                                       ->get()
+                            (string) $this->noneDurableSessionId->regenerate()
         );
     }
 

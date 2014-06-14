@@ -51,7 +51,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
                                  ->method('hasValue')
                                  ->will($this->returnValue(null !== $storageFingerprint));
         $this->mockSessionStorage->expects($this->any())
-                                 ->method('getValue')
+                                 ->method('value')
                                  ->will($this->returnValue($storageFingerprint));
         return new WebSession($this->mockSessionStorage,
                               $this->mockSessionId,
@@ -129,9 +129,9 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
     public function idIsSessionId()
     {
         $this->mockSessionId->expects($this->once())
-                            ->method('get')
+                            ->method('__toString')
                             ->will($this->returnValue('303'));
-        $this->assertEquals('303', $this->createWebSession()->getId());
+        $this->assertEquals('303', $this->createWebSession()->id());
     }
 
     /**
@@ -151,9 +151,9 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
     public function nameIsSessionIdName()
     {
         $this->mockSessionId->expects($this->once())
-                            ->method('getName')
+                            ->method('name')
                             ->will($this->returnValue('foo'));
-        $this->assertEquals('foo', $this->createWebSession()->getName());
+        $this->assertEquals('foo', $this->createWebSession()->name());
     }
 
     /**
@@ -179,7 +179,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
                                  ->method('hasValue')
                                  ->will($this->onConsecutiveCalls(true, false));
         $this->mockSessionStorage->expects($this->any())
-                                 ->method('getValue')
+                                 ->method('value')
                                  ->will($this->returnValue('aFingerprint'));
         return new WebSession($this->mockSessionStorage,
                               $this->mockSessionId,
@@ -236,7 +236,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
                                  ->method('hasValue')
                                  ->will($this->onConsecutiveCalls(true, true, null !== $value));
         $this->mockSessionStorage->expects($this->any())
-                                 ->method('getValue')
+                                 ->method('value')
                                  ->will($this->onConsecutiveCalls('aFingerprint', $value));
         return new WebSession($this->mockSessionStorage,
                               $this->mockSessionId,
@@ -265,7 +265,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
      */
     public function getValueReturnsNullIfValueNotStored()
     {
-        $this->assertNull($this->createWebSessionWithValues()->getValue('foo'));
+        $this->assertNull($this->createWebSessionWithValues()->value('foo'));
     }
 
     /**
@@ -275,7 +275,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('bar',
                             $this->createWebSessionWithValues()
-                                 ->getValue('foo', 'bar')
+                                 ->value('foo', 'bar')
         );
     }
 
@@ -286,7 +286,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('baz',
                             $this->createWebSessionWithValues('baz')
-                                 ->getValue('foo', 'bar')
+                                 ->value('foo', 'bar')
         );
     }
 
@@ -296,7 +296,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
      */
     public function getValueThrowsIllegalStateExceptionFalseOnInvalidSession()
     {
-        $this->createInvalidWebSession()->getValue('foo');
+        $this->createInvalidWebSession()->value('foo');
     }
 
     /**
@@ -354,7 +354,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
     public function getValueKeysReturnsAllKeysWithoutFingerprint()
     {
         $this->mockSessionStorage->expects($this->once())
-                                 ->method('getValueKeys')
+                                 ->method('valueKeys')
                                  ->will($this->returnValue([Session::FINGERPRINT,
                                                             'foo'
                                                            ]
@@ -362,7 +362,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
                                         )
                                    );
         $this->assertEquals(['foo'],
-                            $this->createWebSession()->getValueKeys()
+                            $this->createWebSession()->valueKeys()
         );
     }
 
@@ -372,6 +372,6 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
      */
     public function getValueKeysThrowsIllegalStateExceptionFalseOnInvalidSession()
     {
-        $this->createInvalidWebSession()->getValueKeys();
+        $this->createInvalidWebSession()->valueKeys();
     }
 }

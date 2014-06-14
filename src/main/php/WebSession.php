@@ -81,7 +81,7 @@ class WebSession implements Session
      */
     private function isHijacked($fingerPrint)
     {
-        return $this->storage->getValue(Session::FINGERPRINT) !== $fingerPrint;
+        return $this->storage->value(Session::FINGERPRINT) !== $fingerPrint;
     }
 
     /**
@@ -112,9 +112,9 @@ class WebSession implements Session
      *
      * @return  string  the session id
      */
-    public function getId()
+    public function id()
     {
-        return $this->id->get();
+        return (string) $this->id;
     }
 
     /**
@@ -133,9 +133,9 @@ class WebSession implements Session
      *
      * @return  string
      */
-    public function getName()
+    public function name()
     {
-        return $this->id->getName();
+        return $this->id->name();
     }
 
     /**
@@ -183,14 +183,14 @@ class WebSession implements Session
      * @return  mixed
      * @throws  IllegalStateException
      */
-    public function getValue($key, $default = null)
+    public function value($key, $default = null)
     {
         if (!$this->isValid()) {
             throw new IllegalStateException('Session is in an invalid state.');
         }
 
         if ($this->storage->hasValue($key)) {
-            return $this->storage->getValue($key);
+            return $this->storage->value($key);
         }
 
         return $default;
@@ -241,18 +241,20 @@ class WebSession implements Session
      * @return  string[]
      * @throws  IllegalStateException
      */
-    public function getValueKeys()
+    public function valueKeys()
     {
         if (!$this->isValid()) {
             throw new IllegalStateException('Session is in an invalid state.');
         }
 
-        return array_values(array_filter($this->storage->getValueKeys(),
-                                         function($valueKey)
-                                         {
-                                             return substr($valueKey, 0, 11) !== '__stubbles_';
-                                         }
-                            )
+        return array_values(
+                array_filter(
+                        $this->storage->valueKeys(),
+                        function($valueKey)
+                        {
+                            return substr($valueKey, 0, 11) !== '__stubbles_';
+                        }
+                )
         );
     }
 }

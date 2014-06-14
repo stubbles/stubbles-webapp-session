@@ -51,9 +51,9 @@ class NullSession implements Session
      *
      * @return  string  the session id
      */
-    public function getId()
+    public function id()
     {
-        return $this->id->get();
+        return (string) $this->id;
     }
 
     /**
@@ -72,9 +72,9 @@ class NullSession implements Session
      *
      * @return  string
      */
-    public function getName()
+    public function name()
     {
-        return $this->id->getName();
+        return $this->id->name();
     }
 
     /**
@@ -116,7 +116,7 @@ class NullSession implements Session
      * @param   mixed   $default  optional  return this if no data is associated with $key
      * @return  mixed
      */
-    public function getValue($key, $default = null)
+    public function value($key, $default = null)
     {
         return $default;
     }
@@ -149,7 +149,7 @@ class NullSession implements Session
      *
      * @return  string[]
      */
-    public function getValueKeys()
+    public function valueKeys()
     {
         return [];
     }

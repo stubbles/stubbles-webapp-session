@@ -49,7 +49,7 @@ class SessionBindingScope implements BindingScope
     {
         $key = self::SESSION_KEY . $impl->getName();
         if ($this->session->hasValue($key) === true) {
-            return $this->session->getValue($key);
+            return $this->session->value($key);
         }
 
         $instance = $provider->get();

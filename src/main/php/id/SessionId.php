@@ -20,14 +20,7 @@ interface SessionId
      *
      * @return  string
      */
-    public function getName();
-
-    /**
-     * returns session id
-     *
-     * @return  string
-     */
-    public function get();
+    public function name();
 
     /**
      * stores session id for given session name
@@ -42,4 +35,11 @@ interface SessionId
      * @return  SessionId
      */
     public function invalidate();
+
+    /**
+     * returns session id
+     *
+     * @return  string
+     */
+    public function __toString();
 }

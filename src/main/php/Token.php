@@ -65,7 +65,7 @@ class Token
     public function next()
     {
         $this->init();
-        return $this->session->getValue(self::NEXT_TOKEN);
+        return $this->session->value(self::NEXT_TOKEN);
     }
 
     /**
@@ -74,7 +74,7 @@ class Token
     private function init()
     {
         if (null === $this->current) {
-            $this->current = $this->session->getValue(self::NEXT_TOKEN, md5(uniqid(rand())));
+            $this->current = $this->session->value(self::NEXT_TOKEN, md5(uniqid(rand())));
             $this->session->putValue(self::NEXT_TOKEN, md5(uniqid(rand())));
         }
     }

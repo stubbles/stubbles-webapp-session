@@ -59,7 +59,7 @@ class ArraySessionStorage implements SessionStorage
      * @param   string  $key  key where value is stored under
      * @return  mixed
      */
-    public function getValue($key)
+    public function value($key)
     {
         if (isset($this->data[$key])) {
             return $this->data[$key];
@@ -98,7 +98,7 @@ class ArraySessionStorage implements SessionStorage
      *
      * @return  string[]
      */
-    public function getValueKeys()
+    public function valueKeys()
     {
         return array_keys($this->data);
     }

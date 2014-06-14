@@ -65,7 +65,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     public function givenTokenIsNotValidWhenNotEqualToSessionToken()
     {
         $this->mockSession->expects($this->once())
-                          ->method('getValue')
+                          ->method('value')
                           ->will($this->returnValue('aToken'));
         $this->mockSession->expects($this->once())
                           ->method('putValue');
@@ -78,7 +78,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     public function givenTokenIsValidWhenEqualToSessionToken()
     {
         $this->mockSession->expects($this->once())
-                          ->method('getValue')
+                          ->method('value')
                           ->will($this->returnValue('aToken'));
         $this->mockSession->expects($this->once())
                           ->method('putValue');
@@ -91,7 +91,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     public function nextTokenTakenFromSession()
     {
         $this->mockSession->expects($this->exactly(2))
-                          ->method('getValue')
+                          ->method('value')
                           ->will($this->onConsecutiveCalls('aToken', 'nextToken'));
         $this->mockSession->expects($this->once())
                           ->method('putValue');
