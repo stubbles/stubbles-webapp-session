@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "80ae254405b6b561a7c68f8836aa52bf",
+    "hash": "8e76fc5c38666ddc44964238a5fb68e9",
     "packages": [
         {
             "name": "stubbles/core",
@@ -11,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stubbles/stubbles-core.git",
-                "reference": "206fb3e1c8246b68dd5f7731ae1ae51a0e57f8cf"
+                "reference": "74fe38346cfb804d53bf8ed1fcb77b97922d1ac4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stubbles/stubbles-core/zipball/206fb3e1c8246b68dd5f7731ae1ae51a0e57f8cf",
-                "reference": "206fb3e1c8246b68dd5f7731ae1ae51a0e57f8cf",
+                "url": "https://api.github.com/repos/stubbles/stubbles-core/zipball/74fe38346cfb804d53bf8ed1fcb77b97922d1ac4",
+                "reference": "74fe38346cfb804d53bf8ed1fcb77b97922d1ac4",
                 "shasum": ""
             },
             "require": {
@@ -48,7 +49,7 @@
             ],
             "description": "Provides base classes for Stubbles packages.",
             "homepage": "http://stubbles.net/",
-            "time": "2014-06-14 09:12:29"
+            "time": "2014-06-25 13:16:37"
         },
         {
             "name": "stubbles/input",
@@ -56,12 +57,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stubbles/stubbles-input.git",
-                "reference": "9515717724922ee9326b1053b22b20de84aa60d3"
+                "reference": "e8aa9e9e010fc4c0a43e95c37135e80719c78a54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stubbles/stubbles-input/zipball/9515717724922ee9326b1053b22b20de84aa60d3",
-                "reference": "9515717724922ee9326b1053b22b20de84aa60d3",
+                "url": "https://api.github.com/repos/stubbles/stubbles-input/zipball/e8aa9e9e010fc4c0a43e95c37135e80719c78a54",
+                "reference": "e8aa9e9e010fc4c0a43e95c37135e80719c78a54",
                 "shasum": ""
             },
             "require": {
@@ -93,7 +94,7 @@
             ],
             "description": "Stubbles Input enables to handle input data via validation and filtering.",
             "homepage": "http://stubbles.net/",
-            "time": "2014-06-09 12:54:27"
+            "time": "2014-06-26 09:33:19"
         },
         {
             "name": "stubbles/webapp-core",
@@ -101,12 +102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stubbles/stubbles-webapp-core.git",
-                "reference": "88a2419f718521c47dd7bff0cad44c5635ae8a41"
+                "reference": "9b4be9db319a2d1eb132bb67e44462033b8b37be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stubbles/stubbles-webapp-core/zipball/88a2419f718521c47dd7bff0cad44c5635ae8a41",
-                "reference": "88a2419f718521c47dd7bff0cad44c5635ae8a41",
+                "url": "https://api.github.com/repos/stubbles/stubbles-webapp-core/zipball/9b4be9db319a2d1eb132bb67e44462033b8b37be",
+                "reference": "9b4be9db319a2d1eb132bb67e44462033b8b37be",
                 "shasum": ""
             },
             "require": {
@@ -115,10 +116,13 @@
                 "stubbles/input": "~3.0"
             },
             "require-dev": {
+                "mikey179/vfsstream": "~1.2",
                 "phpunit/phpunit": "~4.1",
+                "stubbles/webapp-session": "~4.0",
                 "stubbles/xml": "~3.0"
             },
             "suggest": {
+                "stubbles/webapp-session": "~4.0",
                 "stubbles/xml": "~3.0"
             },
             "type": "library",
@@ -138,10 +142,40 @@
             ],
             "description": "Base classes for Stubbles based web applications.",
             "homepage": "http://stubbles.net/",
-            "time": "2014-06-09 15:16:57"
+            "time": "2014-06-26 09:33:43"
         }
     ],
     "packages-dev": [
+        {
+            "name": "mikey179/vfsStream",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikey179/vfsStream.git",
+                "reference": "063fb10633f10c5ccbcac26227e94f46d9336f90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikey179/vfsStream/zipball/063fb10633f10c5ccbcac26227e94f46d9336f90",
+                "reference": "063fb10633f10c5ccbcac26227e94f46d9336f90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "org\\bovigo\\vfs\\": "src/main/php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "homepage": "http://vfs.bovigo.org/",
+            "time": "2013-04-01 10:41:02"
+        },
         {
             "name": "phpunit/php-code-coverage",
             "version": "2.0.8",
@@ -839,11 +873,17 @@
             "time": "2014-05-16 14:25:18"
         }
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": [
+
+    ],
     "platform": {
         "php": ">=5.4.0"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }

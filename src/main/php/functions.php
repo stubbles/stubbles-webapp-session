@@ -20,6 +20,16 @@ namespace stubbles\webapp\session {
     use stubbles\webapp\session\storage\NativeSessionStorage;
 
     /**
+     * returns class name for session based HTML file pass through processor
+     * @return  string
+     * @since   4.0.0
+     */
+    function htmlPassThrough()
+    {
+        return 'stubbles\webapp\session\processor\SessionBasedHtmlFilePassThrough';
+    }
+
+    /**
      * returns a callable which creates a session based on php's session implementation
      *
      * @param   string  $sessionName  name of session to create
