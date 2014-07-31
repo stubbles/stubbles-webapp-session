@@ -10,24 +10,12 @@
 namespace stubbles\webapp\session {
     use stubbles\input\web\WebRequest;
     use stubbles\ioc\Binder;
-    use stubbles\webapp\response\Response;
     use stubbles\webapp\session\NullSession;
     use stubbles\webapp\session\Session;
     use stubbles\webapp\session\WebSession;
     use stubbles\webapp\session\id\NoneDurableSessionId;
-    use stubbles\webapp\session\id\WebBoundSessionId;
     use stubbles\webapp\session\ioc\SessionBindingScope;
     use stubbles\webapp\session\storage\NativeSessionStorage;
-
-    /**
-     * returns class name for session based HTML file pass through processor
-     * @return  string
-     * @since   4.0.0
-     */
-    function htmlPassThrough()
-    {
-        return 'stubbles\webapp\session\processor\SessionBasedHtmlFilePassThrough';
-    }
 
     /**
      * returns a callable which creates a session based on php's session implementation
@@ -59,24 +47,6 @@ namespace stubbles\webapp\session {
         return function()
                {
                    return new NullSession(new NoneDurableSessionId());
-               };
-    }
-
-    /**
-     * returns a callable which creates a session that is durable between requests but does not store any values
-     *
-     * The resulting session will keep the session id between requests, but not
-     * any value that is stored within the session.
-     *
-     * @param   string  $sessionCookieName  name of cookie to store session id in
-     * @return  callable
-     * @since   4.0.0
-     */
-    function noneStoring($sessionCookieName)
-    {
-        return function(WebRequest $request, Response $response) use($sessionCookieName)
-               {
-                   return new NullSession(new WebBoundSessionId($request, $response, $sessionCookieName));
                };
     }
 

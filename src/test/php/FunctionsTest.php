@@ -49,36 +49,6 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function noneStoringCreatesNullSession()
-    {
-        $sessionCreator = noneStoring('example');
-        $this->assertInstanceOf(
-                'stubbles\webapp\session\NullSession',
-                 $sessionCreator(
-                        $this->getMock('stubbles\input\web\WebRequest'),
-                        $this->getMock('stubbles\webapp\response\Response')
-                 )
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function noneStoringUsesGivenSessionName()
-    {
-        $sessionCreator = noneStoring('example');
-        $this->assertEquals(
-                'example',
-                 $sessionCreator(
-                        $this->getMock('stubbles\input\web\WebRequest'),
-                        $this->getMock('stubbles\webapp\response\Response')
-                 )->name()
-        );
-    }
-
-    /**
-     * @test
-     */
     public function bindBindsSessionToPassedInstance()
     {
         $binder = new Binder();

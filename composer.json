@@ -7,12 +7,11 @@
     "require": {
         "php": ">=5.4.0",
         "stubbles/core": "~4.0",
-        "stubbles/webapp-core": "~4.0",
         "stubbles/input": "~3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.1",
-        "mikey179/vfsStream": "~1.2"
+        "mikey179/vfsStream": "~1.3"
     },
     "autoload": {
         "psr-4": {
