@@ -10,8 +10,10 @@
 
 ### Other changes
 
-   * removed dependency to stubbles/core
-   * removed dependency to stubbles/input
+  * added `stubbles\webapp\session\nullSession()`
+  * fixed `stubbles\webapp\session\noneDurable()` to create a session which at least stores values within the request
+  * removed dependency to stubbles/core
+  * removed dependency to stubbles/input
 
 
 4.0.0 (2014-07-31)

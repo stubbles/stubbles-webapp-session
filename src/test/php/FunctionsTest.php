@@ -30,11 +30,23 @@ class FunctionsTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function noneDurableCreatesNullSession()
+    public function noneDurableCreatesWebSession()
+    {
+        $this->assertInstanceOf(
+                'stubbles\webapp\session\WebSession',
+                 noneDurable()
+        );
+    }
+
+    /**
+     * @test
+     * @since  5.0.0
+     */
+    public function nullSessionCreatesNullSession()
     {
         $this->assertInstanceOf(
                 'stubbles\webapp\session\NullSession',
-                 noneDurable()
+                nullSession()
         );
     }
 }

@@ -11,6 +11,7 @@ namespace stubbles\webapp\session {
     use stubbles\webapp\session\NullSession;
     use stubbles\webapp\session\WebSession;
     use stubbles\webapp\session\id\NoneDurableSessionId;
+    use stubbles\webapp\session\storage\ArraySessionStorage;
     use stubbles\webapp\session\storage\NativeSessionStorage;
 
     /**
@@ -33,10 +34,21 @@ namespace stubbles\webapp\session {
      * The resulting session will create a new session id with each request. It
      * does not store any values between requests.
      *
-     * @return  \stubbles\webapp\session\NullSession
+     * @return  \stubbles\webapp\session\WebSession
      * @since   4.0.0
      */
     function noneDurable()
+    {
+        return new WebSession(new ArraySessionStorage(), new NoneDurableSessionId(), uniqid());
+    }
+
+    /**
+     * creates a session which does nothing, not even storing any values
+     *
+     * @return  \stubbles\webapp\session\NullSession
+     * @since   5.0.0
+     */
+    function nullSession()
     {
         return new NullSession(new NoneDurableSessionId());
     }
