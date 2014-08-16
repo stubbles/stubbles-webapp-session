@@ -42,7 +42,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
      *
      * @param   string  $givenFingerprint
      * @param   string  $storageFingerprint
-     * @return  WebSession
+     * @return  \stubbles\webapp\session\WebSession
      */
     private function createWebSession($givenFingerprint = 'aFingerprint',
                                       $storageFingerprint = 'aFingerprint')
@@ -171,7 +171,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
      * in this case by simply saying that no fingerprint is present on the
      * second request to the storage.
      *
-     * @return  WebSession
+     * @return  \stubbles\webapp\session\WebSession
      */
     private function createInvalidWebSession()
     {
@@ -228,7 +228,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
      * creates valid web session with value expectations
      *
      * @param   string  $value
-     * @return  WebSession
+     * @return  \stubbles\webapp\session\WebSession
      */
     private function createWebSessionWithValues($value = null)
     {
@@ -292,7 +292,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException  stubbles\lang\exception\IllegalStateException
+     * @expectedException  LogicException
      */
     public function getValueThrowsIllegalStateExceptionFalseOnInvalidSession()
     {
@@ -313,7 +313,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException  stubbles\lang\exception\IllegalStateException
+     * @expectedException  LogicException
      */
     public function putValueThrowsIllegalStateExceptionFalseOnInvalidSession()
     {
@@ -341,7 +341,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException  stubbles\lang\exception\IllegalStateException
+     * @expectedException  LogicException
      */
     public function removeValueThrowsIllegalStateExceptionFalseOnInvalidSession()
     {
@@ -368,7 +368,7 @@ class WebSessionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException  stubbles\lang\exception\IllegalStateException
+     * @expectedException  LogicException
      */
     public function getValueKeysThrowsIllegalStateExceptionFalseOnInvalidSession()
     {

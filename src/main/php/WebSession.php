@@ -8,7 +8,6 @@
  * @package  stubbles\webapp\session
  */
 namespace stubbles\webapp\session;
-use stubbles\lang\exception\IllegalStateException;
 use stubbles\webapp\session\id\SessionId;
 use stubbles\webapp\session\storage\SessionStorage;
 /**
@@ -25,13 +24,13 @@ class WebSession implements Session
     /**
      * where session data is stored
      *
-     * @type  SessionStorage
+     * @type  \stubbles\webapp\session\storage\SessionStorage
      */
     private $storage;
     /**
      * if of the session
      *
-     * @type  SessionId
+     * @type  \stubbles\webapp\session\id\SessionId
      */
     private $id;
     /**
@@ -44,9 +43,9 @@ class WebSession implements Session
     /**
      * constructor
      *
-     * @param  SessionStorage  $storage
-     * @param  SessionId       $id
-     * @param  string          $fingerPrint
+     * @param  \stubbles\webapp\session\storage\SessionStorage  $storage
+     * @param  \stubbles\webapp\session\id\SessionId            $id
+     * @param  string                                           $fingerPrint
      */
     public function __construct(SessionStorage $storage, SessionId $id, $fingerPrint)
     {
@@ -120,7 +119,7 @@ class WebSession implements Session
     /**
      * regenerates the session id but leaves session data
      *
-     * @return  Session
+     * @return  \stubbles\webapp\session\Session
      */
     public function regenerateId()
     {
@@ -151,7 +150,7 @@ class WebSession implements Session
     /**
      * invalidates current session and creates a new one
      *
-     * @return  Session
+     * @return  \stubbles\webapp\session\Session
      */
     public function invalidate()
     {
@@ -181,12 +180,12 @@ class WebSession implements Session
      * @param   string  $key      key where value is stored under
      * @param   mixed   $default  optional  return this if no data is associated with $key
      * @return  mixed
-     * @throws  IllegalStateException
+     * @throws  \LogicException
      */
     public function value($key, $default = null)
     {
         if (!$this->isValid()) {
-            throw new IllegalStateException('Session is in an invalid state.');
+            throw new \LogicException('Session is in an invalid state.');
         }
 
         if ($this->storage->hasValue($key)) {
@@ -201,13 +200,13 @@ class WebSession implements Session
      *
      * @param   string  $key    key to store value under
      * @param   mixed   $value  data to store
-     * @return  Session
-     * @throws  IllegalStateException
+     * @return  \stubbles\webapp\session\Session
+     * @throws  \LogicException
      */
     public function putValue($key, $value)
     {
         if (!$this->isValid()) {
-            throw new IllegalStateException('Session is in an invalid state.');
+            throw new \LogicException('Session is in an invalid state.');
         }
 
         $this->storage->putValue($key, $value);
@@ -219,12 +218,12 @@ class WebSession implements Session
      *
      * @param   string  $key  key where value is stored under
      * @return  bool    true if value existed and was removed, else false
-     * @throws  IllegalStateException
+     * @throws  \LogicException
      */
     public function removeValue($key)
     {
         if (!$this->isValid()) {
-            throw new IllegalStateException('Session is in an invalid state.');
+            throw new \LogicException('Session is in an invalid state.');
         }
 
         if ($this->storage->hasValue($key)) {
@@ -239,12 +238,12 @@ class WebSession implements Session
      * return an array of all keys registered in this session
      *
      * @return  string[]
-     * @throws  IllegalStateException
+     * @throws  \LogicException
      */
     public function valueKeys()
     {
         if (!$this->isValid()) {
-            throw new IllegalStateException('Session is in an invalid state.');
+            throw new \LogicException('Session is in an invalid state.');
         }
 
         return array_values(

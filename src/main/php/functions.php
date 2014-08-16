@@ -8,59 +8,37 @@
  * @package  stubbles\webapp\session
  */
 namespace stubbles\webapp\session {
-    use stubbles\input\web\WebRequest;
-    use stubbles\ioc\Binder;
     use stubbles\webapp\session\NullSession;
-    use stubbles\webapp\session\Session;
     use stubbles\webapp\session\WebSession;
     use stubbles\webapp\session\id\NoneDurableSessionId;
-    use stubbles\webapp\session\ioc\SessionBindingScope;
     use stubbles\webapp\session\storage\NativeSessionStorage;
 
     /**
      * returns a callable which creates a session based on php's session implementation
      *
      * @param   string  $sessionName  name of session to create
-     * @return  callable
+     * @param   string  $fingerPrint  unique fingerprint for user agent
+     * @return  \stubbles\webapp\session\WebSession
      * @since   4.0.0
      */
-    function native($sessionName)
+    function native($sessionName, $fingerPrint)
     {
-        return function(WebRequest $request) use($sessionName)
-               {
-                   $native = new NativeSessionStorage($sessionName);
-                   return new WebSession($native, $native, md5($request->readHeader('HTTP_USER_AGENT')->unsecure()));
-               };
+        $native = new NativeSessionStorage($sessionName);
+        return new WebSession($native, $native, $fingerPrint);
     }
 
     /**
-     * returns a callable which creates a session that is not durable between requests
+     * creates a session which is not durable between requests
      *
      * The resulting session will create a new session id with each request. It
      * does not store any values between requests.
      *
-     * @return  callable
+     * @return  \stubbles\webapp\session\NullSession
      * @since   4.0.0
      */
     function noneDurable()
     {
-        return function()
-               {
-                   return new NullSession(new NoneDurableSessionId());
-               };
-    }
-
-    /**
-     * binds session and creates a session scope
-     *
-     * @param  Binder   $binder
-     * @param  Session  $session
-     * @since  4.0.0
-     */
-    function bind(Binder $binder, Session $session)
-    {
-        $binder->bind('stubbles\webapp\session\Session')->toInstance($session);
-        $binder->setSessionScope(new SessionBindingScope($session));
+        return new NullSession(new NoneDurableSessionId());
     }
 }
 
