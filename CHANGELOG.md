@@ -1,11 +1,11 @@
-5.0.0 (2014-08-??)
+5.0.0 (2014-08-17)
 ------------------
 
 ### BC breaks
 
   * session instance creation functions `stubbles\webapp\session\native()` and `stubbles\webapp\session\noneDurable()` now return the session instance directly instead of a callable
   * removed `stubbles\webapp\session\bind()`
-  * removed `stubbles\webapp\session\ioc\SessionBindingScope`
+  * removed `stubbles\webapp\session\ioc\SessionBindingScope`, is now part of stubbles/webapp-core
 
 
 ### Other changes
