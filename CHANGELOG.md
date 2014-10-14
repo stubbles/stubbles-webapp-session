@@ -1,3 +1,9 @@
+5.0.1 (2014-10-14)
+------------------
+
+  * added constructor to `stubbles\webapp\session\id\NoneDurableSessionId` that allows to predefine session name and fixate session id
+
+
 5.0.0 (2014-08-17)
 ------------------
 

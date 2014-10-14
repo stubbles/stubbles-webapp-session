@@ -29,6 +29,19 @@ class NoneDurableSessionId implements SessionId
     private $sessionName;
 
     /**
+     * constructor
+     *
+     * @param  string  $sessionName  name of session  optional  will be created automatically when not provided
+     * @param  string  $id           actual id        optional  will be created automatically when not provided
+     * @since  5.0.1
+     */
+    public function __construct($sessionName = null, $id = null)
+    {
+        $this->sessionName = $sessionName;
+        $this->id          = $id;
+    }
+
+    /**
      * returns session name
      *
      * @return  string

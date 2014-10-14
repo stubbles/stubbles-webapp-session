@@ -97,4 +97,28 @@ class NoneDurableSessionIdTest extends \PHPUnit_Framework_TestCase
                           $this->noneDurableSessionId->invalidate()
         );
     }
+
+    /**
+     * @test
+     * @since  5.0.1
+     */
+    public function hasGivenSessionNameWhenProvided()
+    {
+        $this->assertEquals(
+                'foo',
+                (new NoneDurableSessionId('foo'))->name()
+        );
+    }
+
+    /**
+     * @test
+     * @since  5.0.1
+     */
+    public function hasGivenSessionIdWhenProvided()
+    {
+        $this->assertEquals(
+                '313',
+                (string) new NoneDurableSessionId('foo', '313')
+        );
+    }
 }
