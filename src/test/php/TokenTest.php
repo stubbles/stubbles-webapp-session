@@ -56,7 +56,7 @@ class TokenTest extends \PHPUnit_Framework_TestCase
     public function annotationsPresentOnConstructor()
     {
         $this->assertTrue(
-                reflect\constructorAnnotationsOf($this->token)
+                reflect\annotationsOfConstructor($this->token)
                         ->contain('Inject')
         );
     }
